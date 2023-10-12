@@ -5,7 +5,7 @@ layout: "About me"
 slug: "About me"
 menu:
     main:
-        weight: 5
+        weight: 2
         params: 
-            icon: archives
+            icon: files
 ---
