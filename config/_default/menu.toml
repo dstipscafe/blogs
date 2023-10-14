@@ -22,3 +22,11 @@ url = "https://www.instagram.com/ds_cafe_and_tips/"
 
 [social.params]
 icon = "brand-instagram"
+
+[[social]]
+identifier = "Portaly"
+name = "Portaly"
+url = "https://portaly.cc/ds_tips_cafe"
+
+[social.params]
+icon = "external-link"
