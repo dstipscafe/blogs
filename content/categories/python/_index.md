@@ -1,7 +1,7 @@
 ---
 title: Python
 description: A category stands for python-related articles.
-image:
+image: python.svg
 
 # Badge style
 style:
