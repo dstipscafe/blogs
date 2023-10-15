@@ -1,7 +1,7 @@
 ---
 title: Blogs
 description: A category stands for blogs.
-image:
+image: blogs.png
 
 # Badge style
 style:
