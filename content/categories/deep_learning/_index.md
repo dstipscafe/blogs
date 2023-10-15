@@ -1,7 +1,7 @@
 ---
 title: Deep Leaning
 description: A category stands for deep learning articles.
-image:
+image: deep_learning.png
 
 # Badge style
 style:
