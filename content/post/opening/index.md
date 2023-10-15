@@ -6,6 +6,7 @@ date: 2023-10-15 00:00:00+0000
 image: cover.png
 categories:
     - welcome
+    - blogs
 tags:
     - welcome
     - blogs
