@@ -1,6 +1,6 @@
 ---
-title: Python
-description: A category stands for python-related article.
+title: Blogs
+description: A category stands for blogs.
 image:
 
 # Badge style
