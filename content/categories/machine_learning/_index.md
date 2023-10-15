@@ -1,7 +1,7 @@
 ---
 title: Machine Learning
 description: A category stands for machine learning articles.
-image:
+image: machine_learning.png
 
 # Badge style
 style:
