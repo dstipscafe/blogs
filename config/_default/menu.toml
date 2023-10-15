@@ -24,6 +24,14 @@ url = "https://www.instagram.com/ds_cafe_and_tips/"
 icon = "brand-instagram"
 
 [[social]]
+identifier = "Threads"
+name = "Threads"
+url = "https://www.threads.net/@ds_cafe_and_tips"
+
+[social.params]
+icon = "brand-threads"
+
+[[social]]
 identifier = "Portaly"
 name = "Portaly"
 url = "https://portaly.cc/ds_tips_cafe"
