@@ -5,10 +5,8 @@ slug: opening
 date: 2023-10-15 00:00:00+0000
 image: cover.png
 categories:
-    - welcome
     - blogs
 tags:
-    - welcome
     - blogs
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
