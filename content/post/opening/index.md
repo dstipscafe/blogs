@@ -1,6 +1,7 @@
 ---
 title: 歡迎來到「資料科學咖啡館&小秘訣分享」
 description: Welcome to 'Data Science Cafe & Tips'.
+slug: opening
 date: 2023-10-15 00:00:00+0000
 image: cover.png
 categories:

@@ -1,6 +1,7 @@
 ---
 title: 如何使用Hugo搭配Github Action來建立一個靜態網站
 description: 快速打造個人筆記，架設到佈屬絲毫不費力
+slug: build_blogs_with_hugo
 date: 2023-10-16 00:00:00+0000
 image: cover_hugo_blogs.png
 categories:
