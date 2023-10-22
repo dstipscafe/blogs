@@ -11,6 +11,7 @@ tags:
     - python
     - deep learning
     - time series forecasting
+weight: 1
 ---
 
 ## 簡介以及專案目標
