@@ -1,5 +1,5 @@
 ---
-title: Deep Leaning
+title: Deep Learning
 description: A category stands for deep learning articles.
 image: deep_learning.png
 
