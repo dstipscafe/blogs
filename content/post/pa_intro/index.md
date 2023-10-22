@@ -2,16 +2,20 @@
 title: Project Amaterasu - 高速公路流量預測
 description: 從零開始打造一個時序預測專案吧！
 slug: project_amaterasu_intro
-date: 2023-10-22 16:00:00+0000
+date: 2023-10-22 16:00:00+0800
 image: pa_intro_cover.png
 categories:
-    - python
-tags:
+    - Python
+    - Side Projects
+    - Deep Learning
     - blogs
-    - python
-    - deep learning
+tags:
+    - Python
+    - Side Projects
+    - Deep Learning
+    - blogs
     - time series forecasting
-weight: 1
+weight: 2
 ---
 
 ## 簡介以及專案目標
