@@ -1,5 +1,5 @@
 ---
-title: Side Project
+title: Side Projects
 description: A category stands for side projects related articles.
 image: side_projects.png
 
