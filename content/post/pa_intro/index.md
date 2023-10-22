@@ -25,4 +25,4 @@ Project Amaterasu 是一個以時序預測為目標的專案。我們將以深�
 ## 相關文章連結
 
 * [專案GitHub](https://github.com/dstipscafe/Amaterasu)
-* [Project Amaterasu - 搜集資料](https://dstipscafe.github.io/blogs/project_amaterasu_data_prepare)
+* [Project Amaterasu - 搜集資料](https://dstipscafe.github.io/blogs/p/project_amaterasu_data_prepare)
