@@ -5,9 +5,7 @@ slug: project_amaterasu_intro
 date: 2023-10-22 16:00:00+0000
 image: pa_intro_cover.png
 categories:
-    - Side Projects
-    - Python
-    - Deep Learning
+    - python
 tags:
     - blogs
     - python
