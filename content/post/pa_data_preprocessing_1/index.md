@@ -79,7 +79,11 @@ gantry_df['鄰近測站代號'] = nearest_pair
 ```python
 import plotly.graph_objects as go
 
-gantry_df = gantry_df.merge(existing_df, left_on='鄰近測站代號', right_on='站號')
+gantry_df = gantry_df.merge(
+    existing_df, 
+    left_on='鄰近測站代號', 
+    right_on='站號'
+)
 
 gantry_df['經度連線'] = gantry_df[['經度_x', '經度_y']].values.tolist()
 gantry_df['緯度連線'] = gantry_df[['緯度_x', '緯度_y']].values.tolist()
