@@ -40,7 +40,7 @@ weight: 1
 
 以下是程式碼的部分：
 
-```python=
+```python
 import numpy as np
 import pandas as pd
 
