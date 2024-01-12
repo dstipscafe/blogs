@@ -2,7 +2,7 @@
 title: Dask 入門 — 快速讀取大量資料
 description: 還在用Pandas加上for迴圈讀取大量CSV資料嗎？ 快來學Dask！
 slug: dask_load_file
-date: 2024-01-09 10:00:00+0800
+date: 2024-01-12 10:00:00+0800
 image: dask_cover_image.png
 categories:
     - python
