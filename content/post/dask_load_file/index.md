@@ -91,7 +91,7 @@ df_instance.visualize()
 
 Dask將會回傳一張圖片，將運算的流程展示給使用者。
 
-![Dask 運算流程示意圖](test.png)
+![Dask 運算流程示意圖](dask_flow_viz.png)
 
 必須注意的事情，只有尚未使用`.compute()`進行計算的物件，才可以使用`.visualize()`進行運算流程的視覺化。
 
