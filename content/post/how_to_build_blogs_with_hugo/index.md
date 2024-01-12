@@ -12,7 +12,7 @@ tags:
     - Github Action
     - CICD
     - DevOps
-weight: 3
+weight: 6
 ---
 
 

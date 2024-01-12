@@ -15,7 +15,7 @@ tags:
     - Deep Learning
     - blogs
     - time series forecasting
-weight: 2
+weight: 5
 ---
 
 ## 簡介以及專案目標
