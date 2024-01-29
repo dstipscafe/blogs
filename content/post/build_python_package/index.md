@@ -280,7 +280,8 @@ python3 setup.py build --wheel
 python3 -m pip install dist/Bifrost-0.0.1-py3-none-any.whl
 ```
 
-> 對於`setup.py`以及`setuptools`的詳細介紹，可以參考本篇[文章:link:](https://www.gushiciku.cn/pl/gOIm/zh-tw)。
+> 對於`setup.py`以及`setuptools`的詳細介紹，可以參考本篇[文章](https://www.gushiciku.cn/pl/gOIm/zh-tw)。
+> 也可以參考官方的[教學](https://packaging.python.org/en/latest/)
 
 ## 測試
 
