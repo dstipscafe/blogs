@@ -1,7 +1,7 @@
 ---
-title: Dask 入門 — 快速讀取大量資料
-description: 還在用Pandas加上for迴圈讀取大量CSV資料嗎？ 快來學Dask！
-slug: dask_load_file
+title: 不知道如何建立自己的Python套件？快讓我一步步教你
+description: 讓你在10分鐘內建構出專屬於自己的Python套件
+slug: build_your_own_python_package
 date: 2024-01-29 23:00:00+0800
 image: cover_image.png
 categories:
@@ -93,7 +93,7 @@ touch Bifrost/__init__.py
 |  必須包含智慧財產權標記  |  :heavy_check_mark:   | :heavy_check_mark: | :heavy_check_mark:  | :heavy_check_mark:  | :heavy_check_mark:  |
 |  必須包含授權條款       |  :heavy_check_mark:   | :heavy_check_mark: |                     | :heavy_check_mark:  | :heavy_check_mark:  |
 
-> 表格來源：為[Medium文章:link:](https://medium.com/@ellierellier/%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98-%E4%BB%80%E9%BA%BC%E6%98%AF%E8%BB%9F%E9%AB%94%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE-software-license-%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE%E7%9B%B8%E9%97%9C%E6%A6%82%E5%BF%B5%E4%B8%80%E6%AC%A1%E9%87%90%E6%B8%85-9d70e29f3a29)之重製版本。
+> 表格來源：為[Medium文章](https://medium.com/@ellierellier/%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98-%E4%BB%80%E9%BA%BC%E6%98%AF%E8%BB%9F%E9%AB%94%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE-software-license-%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE%E7%9B%B8%E9%97%9C%E6%A6%82%E5%BF%B5%E4%B8%80%E6%AC%A1%E9%87%90%E6%B8%85-9d70e29f3a29)之重製版本。
 
 在此我們可以使用MIT授權條款作為軟體授權使用。只要將以下內容加入`LICENSE`檔案中即可：
 
@@ -136,7 +136,7 @@ echo "This is a demo for building your own python package." > README.md
 ```
 
 :::info
-有興趣了解如何撰寫一篇好的README文件，可以參考這篇[文章:link:](http://gitqwerty777.github.io/art-of-readme/)
+有興趣了解如何撰寫一篇好的README文件，可以參考這篇[文章](http://gitqwerty777.github.io/art-of-readme/)
 :::
 
 ### `setup.py`
