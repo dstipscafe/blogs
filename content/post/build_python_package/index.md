@@ -241,7 +241,7 @@ from . import function
 
 這兩個套件都可以透過`pip`指令安裝。安裝指令如下：
 ```shell 
-python3 -m pip install setuptools wheel
+python3 -m pip install setuptools wheel build
 ```
 
 接下來，我們可以透過幾種方式來打包、安裝我們所建立的套件：
