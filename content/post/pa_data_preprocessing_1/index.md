@@ -16,7 +16,6 @@ tags:
     - blogs
     - Data Preprocessing
     - GIS
-weight: 2
 ---
 
 ## 前言

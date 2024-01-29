@@ -15,7 +15,6 @@ tags:
     - Deep Learning
     - blogs
     - Concurrent
-weight: 3
 ---
 
 ## 前言
