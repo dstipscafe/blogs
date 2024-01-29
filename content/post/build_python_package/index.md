@@ -321,14 +321,19 @@ import Bifrost
 
 3. 查看套件架構
     利用`dir()`函式查看`Bifrost`套件架構：
+
 ```python
 dir(Bifrost)
 ```
+
     `dir()`函式將會發送以下回應：
+
 ```python
 ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'function']
 ```
+
     也可以查看`Bifrost`套件中的`function`子套件架構：
+
 ```python
 ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'greeting']
 ```
