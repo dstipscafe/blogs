@@ -308,30 +308,30 @@ Required-by:
 
 1. 進入互動模式
     可以透過以下指令進入互動模式：
-    ```
+    ```shell
     python3
     ```
 2. 導入`Bifrost`套件
     在互動模式中導入`Bifrost`套件：
-    ```
+    ```python
     import Bifrost
     ```
 3. 查看套件架構
     利用`dir()`函式查看`Bifrost`套件架構：
-    ```
+    ```python
     dir(Bifrost)
     ```
     `dir()`函式將會發送以下回應：
-    ```!
+    ```python
     ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'function']
     ```
     也可以查看`Bifrost`套件中的`function`子套件架構：
-    ```!
+    ```python
     ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'greeting']
     ```
 4. 嘗試執行套建中的函式
     可以嘗試執行`Bifrost.utils`的`print_numpy_version`函式來確認套件是否可以正常運作。
-    ```!
+    ```python
     >>> Bifrost.function.greeting()
     你好!
     ```
