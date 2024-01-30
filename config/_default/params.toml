@@ -79,7 +79,7 @@ enabled = true
 provider = "disqus"
 
 [comments.disqusjs]
-shortname = "dstipscafe"
+shortname = ""
 apiUrl = ""
 apiKey = ""
 admin = ""
