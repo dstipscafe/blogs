@@ -348,3 +348,7 @@ dir(Bifrost)
 ```
 
 經過以上測試，可以確認套件已經正確的被安裝了。
+
+{{< notice tip >}}
+This is a very good tip.
+{{< /notice >}}
