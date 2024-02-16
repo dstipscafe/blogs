@@ -1,6 +1,6 @@
 ---
 title: LoRA在LLM以外的應用案例
-description: 使用LoRA來微調ResNEt-50好像不錯？
+description: 使用LoRA來微調ResNet-50好像不錯？
 slug: lora_image_classify_fine_tuning
 date: 2024-02-16 12:00:00+0800
 image: cover_image.png
@@ -23,7 +23,7 @@ tags:
 在大型語言模型如雨後春筍的推出之下，使用[LoRA](https://arxiv.org/abs/2106.09685)為大型語言模型進行微調已經是一個很普遍的技術。但LoRA是否也能為以往的一些模型微調任務提供強力的輔助，卻比較少被人所提及。我將在這篇文章中示範使用LoRA來對ResNet-50進行微調，並分析在幾種不同的組合下LoRA可以為我們帶來怎樣的便利。
 
 {{< notice info >}}
-礙於資訓練，我並不會在這篇文章中介紹LoRA的概念，如果對LoRA有興趣的話，可以參考這篇[文章](https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6)
+礙於資訓練，我並不會在這篇文章中介紹LoRA的概念，如果對LoRA有興趣的話，可以參考這篇[文章](https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6)。
 {{< /notice >}}
 
 ## 案例探討
@@ -71,7 +71,7 @@ tags:
 
 ## 探討
 
-以這次的案例探討中，可以發現使用LoRA進行模型微調可以取得非常好的準確率。但除此之外，使用LoRA還有什麼好處呢？我想最重要的部分**減少資料傳輸**。
+以這次的案例探討中，可以發現使用LoRA進行模型微調可以取得非常好的準確率。但除此之外，使用LoRA還有什麼好處呢？我想最重要的部分是**減少資料傳輸**。
 
 以LoRA的微調設計而言，我們在分享模型時，不需要把整個模型都上傳到網路上，只需要將LoRA的adapter部分進行儲存，並分享即可。以本次的案例二而言，將模型整個進行儲存，檔案大小將會達到109MiB，但如果僅儲存LoRA的部分，則只需要7.9MiB的容量。相較之下，如果僅需要分享LoRA，可以減少大量的資料傳輸需求。
 
