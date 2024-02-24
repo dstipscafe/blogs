@@ -1,7 +1,7 @@
 ---
 title: 來架設自己的GitLab吧！
 description: 透過Docker來快速建立自己的GitLab
-slug: build_your_own_python_package
+slug: host_your_gitlab
 date: 2024-02-24 15:00:00+0800
 image: cover.png
 categories:
