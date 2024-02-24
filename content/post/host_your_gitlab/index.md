@@ -2,7 +2,7 @@
 title: 來架設自己的GitLab吧！
 description: 透過Docker來快速建立自己的GitLab
 slug: host_your_gitlab
-date: 2024-02-24 15:00:00+0800
+date: 2024-02-24 14:00:00+0800
 image: cover.png
 categories:
     - DevOps
