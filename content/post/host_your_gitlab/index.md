@@ -47,7 +47,7 @@ DevOps已經是軟體以及大數據時代人盡皆知的一個概念，也以�
 
 {{< notice warning >}}
 請務必將以下教學中的/path/to/your前綴更改成讀者自身所設定的位置。
-{{< /warning >}}
+{{< /notice >}}
 
 ```shell
 sudo apt-get -y update
