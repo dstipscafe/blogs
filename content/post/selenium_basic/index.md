@@ -56,7 +56,7 @@ except Exception as e:
 
 {{< notice warning >}}
 下載web driver時，需要配合瀏覽器的版本進行下載！
-{{< /warning >}}
+{{< /notice >}}
 
 ## 開始使用
 
