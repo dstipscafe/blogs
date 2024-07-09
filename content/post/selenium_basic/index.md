@@ -2,7 +2,7 @@
 title: [互動式爬蟲系列1] Selenium基礎 
 description: 讓瀏覽器自己動起來，好像很有趣？
 slug: selenium_basic
-date: 2024-07-09 14:00:00+0800
+date: 2024-07-09 22:00:00+0800
 image: cover.jpg
 categories:
     - side_projects
