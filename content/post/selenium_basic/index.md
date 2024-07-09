@@ -1,5 +1,5 @@
 ---
-title: \[互動式爬蟲系列1\] Selenium基礎 
+title: "[互動式爬蟲系列1] Selenium 基礎"
 description: 讓瀏覽器自己動起來，好像很有趣？
 slug: selenium_basic
 date: 2024-07-09 22:00:00+0800
