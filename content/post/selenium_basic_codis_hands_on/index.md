@@ -195,3 +195,284 @@ tags:
 7. 完成
 
 以上就是初步的流程規劃。接下來我們將進行實作示範。
+
+## 實作示範
+
+接下來我們將進行實作示範，我們將會分成三個部分來進行。
+
+### 啟動網站搜尋測站
+
+關於啟動網站的部分，與上一篇文章相同，我們將先對瀏覽器進行設定，並連線至CODiS平台。
+
+```python
+# 導入必要模組
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+# 設定瀏覽器參數
+chrome_options = Options()
+
+# 建立driver物件
+driver = webdriver.Chrome(options=chrome_options)
+
+# 連線至CODiS平台
+driver.get("https://codis.cwa.gov.tw/StationData")
+
+# 等待網站載入
+driver.implicitly_wait(2)
+```
+
+接下來，我們需要將指定的測站進行檢查，確認是否為署屬有人站，並依照結果進行對應的處理。我們可以參考CODiS頁面中的「測站清單」來了解各個類別的代號命名原則。
+
+![署屬有人站](image-19.png)
+![自動雨量站](image-20.png)
+![自動氣象站](image-21.png)
+![農業站](image-22.png)
+
+透過以上四張截圖，我們可以簡單歸納出測站代號的規則：
+
+1. 開頭為**46**的為署屬有人站
+2. 開頭為**C1**的為自動雨量站
+3. 開頭為**C0**的為自動氣象站站
+4. 不符合以上規則的為農業站
+
+有了以上的規則，我們就能撰寫對應的程式碼了。以下是一個簡單利用**match-case**語法建構的條件控制，之後我們會將**return**改為對應物件的XPATH。
+
+```python
+def stn_type(stn_code: str):
+    match stn_code[:2]:
+        case '46':
+            return 1
+        case 'C1':
+            return 2
+        case 'C0':
+            return 3
+        case _:
+            return 4
+```
+
+以先前的觀察，網站在預設的場景下會自動勾選「署屬有人站」，故在屬於其他的類別時，我們需要手動進行勾選。
+
+![測站類別勾選物件](image-23.png)
+
+可以注意到我們的目標對象會是一個在`div`物件底下的`input`物件，我們可以透過`id`來區分各個類別。我們可以藉此改寫上方的函式：
+
+```python
+def stn_type(stn_code: str):
+    match stn_code[:2]:
+        case '46':
+            return None
+        case 'C1':
+            return "//div[@class='form-check' and .//input[@id='auto_C1']]"
+        case 'C0':
+            return "//div[@class='form-check' and .//input[@value='auto_C0']]"
+        case _:
+            return "//div[@class='form-check' and .//input[@value='agr']]"
+```
+
+由於署屬有人站是預設勾選的，所以在輸入的測站代號為該類別時，不需要做額外的處理，因此我們可以使用`if`在其他類別被選取到時，進行勾選：
+
+```python
+# ...(先前部分)
+
+from selenium.webdriver.common.by import By
+
+stn_code = "..."
+stn_type_opt = stn_type(stn_code)
+
+if stn_type_opt is not None:
+    stn_input_element = driver.find_element(By.XPATH, stn_type_opt)
+    stn_input_element.click()
+
+```
+
+有了可以根據輸入測站類別勾選測站類型的程式碼後，我們可以進入到測站的搜尋以及點擊環節。在先前的觀察中，我們可以注意到直接輸入測站代號並搜尋到對應的測站。要找到輸入欄位並進行輸入，則需要先找到對應的XPATH。
+
+![輸入物件](image-24.png)
+
+我們可以注意到，輸入測站代號的欄位是一個`input`物件，與**站名站號**的文字位於同一個`div`之中。這邊我們將採取先找到最上層的`div`，再找到其中的`input`物件的搜尋策略，所以我們將使用以下的程式碼來完成：
+
+```python
+# ...(先前部分)
+
+# 找到輸入測站代號之上層div欄位
+stn_code_row = driver.find_element(By.XPATH,  "//div[@class='row' and .//*[contains(text(), '站名站號')]]")
+
+# 找尋input物件並將測站代號輸入
+stn_input_element = stn_code_row.find_element(By.XPATH, ".//input[@class='form-control']")
+stn_input_element.send_keys(stn_code)
+
+# 等待網站運作
+time.sleep(2)
+```
+
+![運作結果示意圖](image-25.png)
+
+可以注意到當程式碼執行到上方的部分後，畫面將會出現指定的測站標記。此時，我們要做的就是讓程式去點擊該標記，並展開標示：
+
+![測站標記物件](image-26.png)
+
+我們可以注意到，構成標記的整個物件是一個`div`物件。在此，我們取`div`的**class**作為參考標記來進行標記的選取。
+
+```python
+# ...(先前部分)
+
+# 找尋並點擊測站標記
+map_icon = driver.find_element(
+    By.XPATH, "//div[contains(@class, 'leaflet-interactive')]"
+)
+map_icon.click()
+
+# 等待網站運作
+time.sleep(2)
+```
+
+![執行結果](image-27.png)
+
+可以發現我們的程式碼正確的點擊了標記。
+
+那麼，接下來就是繼續點擊「觀看時序圖報表」的按鈕了。我們同樣透過**inspect**來查看物件的細節：
+
+![「觀看時序圖報表」物件細節](image-28.png)
+
+可以注意到這個按鈕是`button`物件，並帶有與測站代號相同的`data-stn_id`屬性。那麼，示範到這裡，相信讀者們也很熟悉該如何處理了。以下是我們點擊按鈕的程式碼：
+
+```python
+# ...(先前部分)
+
+# 找尋並點擊「觀看時序圖報表」按鈕
+open_button = driver.find_element(
+    By.XPATH, 
+    f"//button[contains(@class, 'show_stn_tool') and contains(@data-stn_id, '{stn_code}')]"
+)
+open_button.click()
+
+# 等待瀏覽器運作
+time.sleep(2)
+```
+
+在執行上方的程式碼之後，將會透過點擊按鈕展開資訊報表。
+
+![點擊「觀看時序圖報表」按鈕後，展開資訊報表](image-29.png)
+
+至此，我們的第一階段，也就是準備動作已經完成。
+
+### 調整日期
+
+在成功展開資訊報表之後，下一個步驟就是將報表的日期挑整成我們期待的日期（這邊先假設以日報表為爬取目標，不處理其他時間尺度的報表）。在先前的章節中，我們曾經簡單的介紹過日期選單的組成，在此我們將稍微採取就以往不同的手段來進行處理。在先前的章節中，我們都是以主要的`driver`物件來進行物件的搜尋；在此章節，因為我們需要使用的物件都集中在一個大的物件底下，所以我們將把操作的對象從原本的`driver`轉換到這個區域的物件底下，縮減搜索範圍的同時，提高處理的效率，並避免找到錯誤的對象。
+
+![表單區域主要物件](image-30.png)
+
+![日期表單主要物件](image-31.png)
+
+
+假設我們希望爬取「2020年1月1日」的天氣單日氣象觀測資料。
+
+```python
+# ...(先前部分)
+from selenium.webdriver.common.action_chains import ActionChains
+
+year = 2020
+month = 'Januray'
+day = 1
+
+# 找到主要物件
+main_panel = driver.find_element(
+    By.XPATH, 
+    "//div[contains(@class, 'lightbox-tool-type-container') and not(contains(@style, 'display: none;'))]"
+)
+
+# 找到日期選單
+datetime_panel = main_panel.find_element(
+    By.CLASS_NAME,
+    "vdatetime"
+)
+
+# 點擊日期選單
+actions = ActionChains(driver)
+actions.move_to_element(datetime_panel).click().perform()
+
+# 等待瀏覽器運作
+time.sleep(2)
+
+# 找到年份選單，點擊展開，並選擇指定年份
+year_selector = main_panel.find_element(
+    By.XPATH,
+    "//div[contains(@class, 'vdatetime-popup__year')]",
+)
+year_selector.click()
+
+year_opt = main_panel.find_element(
+    By.XPATH,
+    f"//div[contains(@class, 'vdatetime-year-picker__item') and contains(text(), '{year}')]",
+)
+year_opt.click()
+
+# 找到月份選單，點擊展開，並選擇指定月份
+month_selector = main_panel.find_element(
+    By.XPATH,
+    "//div[contains(@class, 'vdatetime-popup__date')]",
+)
+month_selector.click()
+
+month_opt = main_panel.find_element(
+    By.XPATH,
+    f"//div[contains(@class, 'vdatetime-month-picker__item') and contains(text(), '{month}')]",
+)
+month_opt.click()
+
+# 選定日期
+day_opt = main_panel.find_element(
+    By.XPATH,
+    f"//div[contains(@class, 'vdatetime-calendar__month__day') and .//*[contains(text(), '{day}')]]",
+)
+day_opt.click()
+
+# 等待網站運作
+time.sleep(2)
+```
+
+在執行程式碼之後，將會看到程式依序選取對應的年份、月份以及日期。接下來，我們將進入下載的環節。
+
+![執行結果](image-32.png)
+
+{{< notice note >}}
+
+由於日期選項的部分，與年份以及月份不同，額外有一層`<span></span>`包覆住日期，所以需要使用稍微不同的XPATH邏輯來選取。
+
+{{< /notice >}}
+
+{{< notice note >}}
+
+由於月份在網頁中是以英文單字的方式表現，故需要使用對應的單字作為選項。若自行修改成使用數字對應，需要自行處理轉換部分。
+
+{{< /notice >}}
+
+### 下載CSV檔案
+
+在所有的準備都完成之後，我們可以開始進行下載檔案的步驟。由於下載按鈕與日期選單屬於同一個`div`之下，我們將沿用前一部分的`main_panel`來進行操作。首先，我們來確認下載按鈕的物件：
+
+![下載按鈕](image-33.png)
+
+可以注意到，下載按鈕與左右兩個按鈕不同，是由`div`所包裹的`<img>`物件，然而，這個`div`與左右兩個按鈕的`<a>`具有相同的`class`屬性。在這部分我們需要小心處理。
+
+```python
+# ...(先前部分)
+
+download_button = main_panel.find_element(
+    By.XPATH,
+    "//div[@class='lightbox-tool-type-ctrl-btn' and .//img]",
+)
+download_button.click()
+```
+
+在執行後，網頁將會透過點擊按鈕，並下載檔案。
+
+![下載成功畫面](image-34.png)
+
+至此，我們已經成功撰寫一個基於Selenium的互動式爬蟲範例，並成功爬取了CODiS平台上的資料。
+
+## 結語
+
+互動式網頁爬蟲是自由度很高的一個技術，以這次作為範例的CODiS平台來說，是相對容易處理的對象，因為並沒有反爬蟲，也不存在機器人測試。在處理手法上，本範例僅提供一些做法作為參考，希望能為想要了解的人提供一個全面且入門的範例。希望越讀完這篇文章的你／妳能夠滿載而歸。
