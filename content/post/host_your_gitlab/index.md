@@ -202,6 +202,6 @@ environment:
 
 接下來，我們需要讓使用的系統信任此憑證。以Ubuntu為例，我們只需要把剛剛產生的`server.crt`下載到系統之中，並將其複製到`/usr/local/share/ca-certificates`資料夾之下，並執行`sudo update-ca-certificates`指令即可使Ubuntu信任我們簽署的證書。
 
-## 小節
+## 小結
 
 利用Docker來建立各式各樣的功能實在是非常方便，對於架設HomeLab的人來說更是省時間又省力氣超級好幫手。我會在接下來的文章中介紹如何啟用`Container Registry`以及如何為GitLab新增`GitLab Runner`。
