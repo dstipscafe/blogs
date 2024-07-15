@@ -1,5 +1,5 @@
 ---
-title: "[互動式爬蟲系列2] Selenium 基礎"
+title: "[互動式爬蟲系列2] Selenium 實作演練——爬取CODiS氣象觀測資料 "
 description: 讓瀏覽器自己動起來，好像很有趣？
 slug: selenium_basic_codis_hands_on
 date: 2024-07-15 10:00:00+0800
