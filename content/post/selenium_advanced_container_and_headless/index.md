@@ -1,8 +1,8 @@
 ---
 title: "[互動式爬蟲系列3] Selenium 進階 － 使用Headless模式搭配容器運行 "
-description: 讓瀏覽器自己動起來，好像很有趣？
+description: 不用開啟瀏覽器也能玩互動式爬蟲，好像很有趣？
 slug: selenium_advanced_container_and_headless
-date: 2024-07-31 10:00:00+0800
+date: 2024-07-15 19:10:00+0800
 image: cover.jpg
 categories:
     - side_projects
@@ -28,7 +28,7 @@ Docker，或者說容器化技術，是現在開發以及部署中非常重要�
 
 ### Headless模式
 
-要在不開啟瀏覽器的前提下進行運作，需要使用`headless`模式。同樣的，我們以Chrome進行示範。在先前的示範中，我們雖然有使用`Options`但並未對其進行相關設定；在使用`headless`模式時，需要進行以下處理：
+要在不開啟瀏覽器的前提下進行運作，需要使用`headless`模式。同樣的，我們以Chrome進行示範。在先前的示範中，我們雖然有使用`Options`，但並未對其進行相關設定；在使用`headless`模式時，需要進行以下處理：
 
 ```python
 from selenium.webdriver.chrome.options import Options
