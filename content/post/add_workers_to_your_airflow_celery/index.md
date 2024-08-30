@@ -13,6 +13,7 @@ tags:
     - Docker
     - Airflow
     - Docker Compose
+    - Celery Worker
 ---
 
 ## 簡介
