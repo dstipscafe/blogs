@@ -2,7 +2,7 @@
 title: "使用 Docker Compose 部署 Airflow"
 description: "來架設自己的自動化軟體吧？"
 slug: hosting_airflow_docker_compose
-date: 2024-08-30 17:00:00+0800
+date: 2024-08-30 16:00:00+0800
 image: cover.jpg
 categories:
     - blogs
