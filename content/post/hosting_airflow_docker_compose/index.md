@@ -97,11 +97,11 @@ docker-compose up -d --profile flower
 
 * 在啟動服務的同時進行自訂義容器的建構
 
-當使用`Docker Compose`時，可以在啟動容器時構建映像，而不是先構建映像並指定給`Docker Compose`使用。請參閱[Docker Compose文件](https://docs.docker.com/reference/compose-file/build/)來進行設定。
+    當使用`Docker Compose`時，可以在啟動容器時構建映像，而不是先構建映像並指定給`Docker Compose`使用。請參閱[Docker Compose文件](https://docs.docker.com/reference/compose-file/build/)來進行設定。
 
 * 預先建構自定義容器映像檔
 
-我們可以先構建所需的映像，然後通過`AIRFLOW_IMAGE_NAME`環境變數進行設定。
+    我們可以先構建所需的映像，然後通過`AIRFLOW_IMAGE_NAME`環境變數進行設定。
 
 ### 清理環境
 
