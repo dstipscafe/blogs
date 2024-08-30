@@ -9,4 +9,4 @@ contentDir = 'content/zh-tw'
 languageName = "English"
 languagedirection = "ltr"
 title = "Data Science Cafe & Tips | English Version"
-weight = 1
+weight = 2
