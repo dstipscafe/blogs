@@ -5,7 +5,7 @@ slug: torch_build_your_data_pipeline
 date: 2024-03-24 14:00:00+0800
 image: cover.png
 categories:
-    - Deep Learning
+    - deep_learning
     - blogs
 tags:
     - blogs
