@@ -2,11 +2,11 @@
 [zh-tw]
 languageName = "Chinese (Traditional) (Taiwan)"
 languagedirection = "ltr"
-title = "測試"
+title = "資料科學咖啡館&小秘訣分享 | Data Science Cafe & Tips | 中文版"
 weight = 1
 contentDir = 'content/zh-tw'
 [en]
 languageName = "English"
 languagedirection = "ltr"
-title = "Example Site"
+title = "Data Science Cafe & Tips | English Version"
 weight = 1
