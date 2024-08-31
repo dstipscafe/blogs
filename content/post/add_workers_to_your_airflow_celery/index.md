@@ -71,3 +71,10 @@ docker-compose up -d
 
 我們可以檢查worker是否已連接到現有服務。請啟動`Flower`網頁以查看狀態。如果worker成功連接到現有服務，網頁中應存在兩個worker：
 ![Flower網頁](image.png)
+
+
+{{< notice warning >}}
+
+請務必再次確認worker節點是否有與主要節點同步`dags/`資料夾下的內容，以免造成任務失敗！
+
+{{< /notice >}}
