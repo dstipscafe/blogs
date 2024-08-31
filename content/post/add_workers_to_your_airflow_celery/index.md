@@ -20,10 +20,11 @@ tags:
 
 `Celery`是一個簡單、靈活且可靠的分佈式任務佇列系統，廣泛用於處理並行任務。在Airflow中，`CeleryExecutor`是一個受歡迎的選擇，它能夠將任務分佈到多個節點（Workers）上，從而實現分佈式部署。這種架構使Airflow能夠通過增加更多的Worker來增加系統的處理能力，從而有效管理大規模數據管道，並確保任務在指定的時間內完成。使用Docker Compose架設帶有`CeleryExecutor`的Airflow提供了一個靈活且可管理的解決方案，以應對不同的工作負載。
 
-## 先決條件
+## 前置準備
 
 * 請確保現有的Airflow服務可以被worker訪問。
 * 我們將使Airflow網站提供的`docker-compose.yaml`文件。通過編輯該配置文件，我們可以為現有的基於`CeleryExecutor`的Airflow服務添加一個額外的worker。
+* 請確保worker所在的節點可以與主要節點同步`dags/`資料夾下的內容！若workers節點不存在正確的DAG檔案，將造成任務運作失敗！
 
 ## 編輯設定
 
