@@ -14,8 +14,6 @@ tags:
     - Docker Compose
 ---
 
-
-
 ## Introduction
 
 n8n is a low-code automation platform. n8n provides both local and cloud setups for users. In this note, we are going to setup a local n8n service for personal usage.
@@ -150,7 +148,8 @@ docker-compose up -d
 {{< notice warning >}}
 
 IMPORTANT!!!!!: Don’t forget to change the credentials!
-{{< notice warning >}}
+
+{{< /notice >}}
 
 ### TOGO
 
