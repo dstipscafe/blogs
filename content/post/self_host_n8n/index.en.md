@@ -147,7 +147,10 @@ Then execute the command to host the services:
 docker-compose up -d
 ```
 
+{{< notice warning >}}
+
 IMPORTANT!!!!!: Don’t forget to change the credentials!
+{{< notice warning >}}
 
 ### TOGO
 
