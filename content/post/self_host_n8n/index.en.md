@@ -84,7 +84,7 @@ We will use the withPostgres option here. You can find the configuration in this
 
 For those who want to host n8n in the same machine, directly execute the following command:
 
-```
+```shell
 docker-compose up -d
 ```
 
