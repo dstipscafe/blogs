@@ -44,6 +44,19 @@ tags:
 
 在這個教學中，我們將使用`docker-compose/withPostgres`資料夾中的檔案。
 
+### 修改資料庫使用者資訊
+
+在啟動服務前，請務必修改資料庫的使用者資訊。修改`.env`檔案中的內容：
+
+```
+POSTGRES_USER=changeUser
+POSTGRES_PASSWORD=changePassword
+POSTGRES_DB=n8n
+
+POSTGRES_NON_ROOT_USER=changeUser
+POSTGRES_NON_ROOT_PASSWORD=changePassword
+```
+
 ### 直接使用預設設定
 
 如果不進行額外設定，可以直接使用以下的指令啟動n8n服務。
@@ -54,7 +67,7 @@ docker-compose up -d
 
 ### 進行客製化設定
 
-當你需要進行客製化設定，例如把n8n放在不同的電腦運作，或是要更改預設資料庫的使用者以及密碼時，可以將`docker-compose.yml`檔案中的內容進行修改。以下是一些範例：
+當你需要進行客製化設定，例如把n8n放在不同的電腦運作，可以將`docker-compose.yml`檔案中的內容進行修改，使得其他電腦可以訪問到容器的連接埠。以下是一個範例：
 
 #### 將n8n部署在不同的機器
 
@@ -105,18 +118,18 @@ services:
         condition: service_healthy
 ```
 
-#### 修改資料庫使用者資訊
+{{< notice warning >}}
 
-要對資料庫的使用者資訊進行修改，可以修改`.env`檔案內的設定：
+重要！請務必變更使用者資訊以避免資安問題。
 
-```
-POSTGRES_USER=changeUser
-POSTGRES_PASSWORD=changePassword
-POSTGRES_DB=n8n
+{{< /notice >}}
 
-POSTGRES_NON_ROOT_USER=changeUser
-POSTGRES_NON_ROOT_PASSWORD=changePassword
-```
+## 連線至服務
+
+當n8n服務就緒，我們將可以透過以下的網址訪問n8n服務：
+
+1. 同一機器：`http://localhost:5678`
+2. 跨機器訪問：`http://<n8n ip>:5678`
 
 ## 結語
 
