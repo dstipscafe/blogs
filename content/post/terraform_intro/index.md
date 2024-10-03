@@ -1,5 +1,5 @@
 ---
-title: "Terrform簡介"
+title: "Terraform簡介"
 description: "什麼？原來可以把所有的環境設定變成程式碼？"
 slug: terraform_intro
 date: 2024-10-03 00:00:00+0800
