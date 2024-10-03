@@ -118,11 +118,16 @@ other commands, please read the help and docs before usage.
 
 ## Terraform x Docker 用Terraform來管理Docker的映像檔以及容器
 
-接下來將示範如何使用Terraform來管理Docker映像檔案以及容器。
+接下來將示範如何使用Terraform來管理Docker映像檔案以及容器。在這個示範中，我們將會：
+
+1. 建立專案
+2. 設定專案以及所需要的`Provider`
+3. 設定映像檔以及容器資源
+4. 初始化、建立規劃並套用設定
 
 ### 建立專案
 
-首先，我們需要先建立一個資料夾，名為`terraform_demo`。
+首先，我們需要先建立一個資料夾，名為`terraform_demo`。我們將會把這個示範中所使用的設定檔案存放在這個資料夾之下。
 
 ```shell
 mkdir terraform_demo
@@ -130,7 +135,7 @@ mkdir terraform_demo
 
 ### 基礎設定以及Provider
 
-`Provider`在Terraform生態中，由不同的團隊或是公司所提供，可以協助我們控管不同資源的工具。接下來，我們將設定專案會需要的`provider`。
+接下來，我們需要宣告需要的`Provider`，用以管理環境。`Provider`在Terraform生態中，由不同的團隊或是公司所提供，可以協助我們控管不同資源的工具。
 
 建立`provider.tf`檔案，並加入以下內容：
 
@@ -198,7 +203,7 @@ terraform init
 在專案完成初始化後，我們將可以使用`plan`指令來查看哪一些資源將會被建立或是刪除。執行`terraform plan`指令，可以注意到Terraform提供了一個計劃內容。其計劃新增一個`docker_container.test`
 資源，以及`docker_image.ubuntu`資源。
 
-```shell
+```
 $ terraform plan                                                                                                    ─╯
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
@@ -267,7 +272,7 @@ you run "terraform apply" now.
 
 當檢查完`terraform plan`所提出的計畫，並確認沒有問題之後，我們就可以使用`terraform apply`來將計劃付諸實行，套用至系統之中。
 
-```shell
+```
 $ terraform apply                                                                                                   ─╯
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
@@ -341,7 +346,7 @@ Do you want to perform these actions?
 
 我們可以透過`docker ps`來檢查我們所設定的容器是否正常的被啟動了：
 
-```shell
+```
 $ docker ps                                                                             
 
 CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
