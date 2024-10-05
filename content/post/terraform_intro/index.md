@@ -37,6 +37,12 @@ brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 ```
 
+若是遇到提示`Command Line Tool`版本過舊，可以使用以下的指令更新：
+
+```shell
+softwareupdate -i "Command Line Tools for Xcode-16.0"
+```
+
 成功安裝後，可以嘗試執行`terraform -help`。若是安裝成功，將會出現幫助訊息。
 
 ```shell
@@ -50,17 +56,6 @@ started with Terraform, stick with the common commands. For the
 other commands, please read the help and docs before usage.
 ##...
 ```
-
-{{< notice warning >}}
-
-MacOS使用者若遇到提示`Command Line Tool`版本過舊，可以使用以下的指令更新：
-
-```shell
-softwareupdate -i "Command Line Tools for Xcode-16.0"
-```
-
-{{< /notice >}}
-
 
 ### Linux
 
