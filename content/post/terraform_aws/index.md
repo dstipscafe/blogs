@@ -286,6 +286,8 @@ resource "aws_route" "private_internet_gateway_az2" {
 
 ```
 
+> 關於AWS個區域的IP範圍，可以參考官方的[資料](https://ip-ranges.amazonaws.com/ip-ranges.json)。
+
 ### 設定路由表關聯
 
 我們已經完成了路由以及路由表的設定，接下來我們需要透過**路由表關聯**來將這些規則與子網進行關聯。對於公開子網，我們可以透過`length`以及`element`進行設定，而私有子網則各自設定：
