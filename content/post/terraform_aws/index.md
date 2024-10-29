@@ -12,6 +12,9 @@ tags:
     - Docker
     - IaC
     - Terraform
+    - AWS
+    - EC2
+    - VPC
 
 ---
 
