@@ -24,7 +24,7 @@ tags:
 
 ## 架構簡介
 
-我們將在本文中，使用AWS雲端環境，在AWS日本的資料中心的兩個可用區域(Availablility Zone, AZ)之中，分別架構一組公開(Public)以及私有(Private)的子網(Subnet)，並納入同一個虛擬私人雲端(Virtaual Private CLoud, VPC)之中。在公開以及私有的子網中，我們將會分別設定一個EC2計算實體，並進行對應的網路限制。
+我們將在本文中，使用AWS雲端環境，在AWS日本的資料中心的兩個可用區域(Availablility Zone, AZ)之中，分別架構一組公開(Public)以及私有(Private)的子網(Subnet)，並納入同一個虛擬私人雲端(Virtaual Private CLoud, VPC)之中。在公開以及私有的子網中，我們將會分別設定一個EC2運算實體，並進行對應的網路限制。
 
 ![本文章將設定的環境示意圖](aws_infra.jpg)
 
@@ -390,7 +390,7 @@ resource "aws_vpc_security_group_egress_rule" "default_same_sg_connection_egress
 
 ### 設定AMI
 
-在Terraform的AWS管理工具中，提供了透過`data`物件設定AMI的功能。以下是設定一個ubuntu的範例。
+在Terraform的AWS管理工具中，提供了透過`data`物件設定AMI的功能。以下是設定一個以ubuntu為系統的的範例。
 
 ```
 data "aws_ami" "ubuntu" {
@@ -414,7 +414,7 @@ data "aws_ami" "ubuntu" {
 
 ### 設定運算實體
 
-接下來，我們將使用設定好的`aws_ami`物件建立四個運算實體。我們將使用`t3.samll`的EC2實體，並將每一個運算實體對應到同一個安全群組，以及對應的子網。以下是設定：
+接下來，我們將使用設定好的`aws_ami`物件建立四個運算實體。我們將使用類別為`t3.samll`的EC2運算實體，並將每一個運算實體對應到同一個安全群組，以及對應的子網。以下是設定：
 
 ```
 resource "aws_instance" "az1_public" {
@@ -495,7 +495,9 @@ resource "aws_instance" "az2_private" {
 }
 ```
 
-在設定中，可以注意到一個`key_name`，這是AWS EC2的功能中，託管SSH金鑰的功能。礙於篇幅，我們在本文章中不會介紹。此功能是將公鑰放置於AWS環境中，並讓運算實體可以使用先載入此公鑰的功能。
+在設定中，可以注意到一個`key_name`的設定，這是AWS EC2的功能中，託管SSH金鑰的功能。礙於篇幅，我們在本文章中不會介紹。此功能是將公鑰放置於AWS環境中，並讓運算實體可以使用先載入此公鑰的功能。
+
+> 關於金鑰託管功能，可以參考[官方文件](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)。
 
 ## 套用設定
 
@@ -529,7 +531,8 @@ terraform apply
 2. 【技術分享】Internet Gateway 和 NAT Gateway 的區別在哪? 功能分別是什麼?：https://medium.com/@awseducate.cloudambassador/%E6%8A%80%E8%A1%93%E5%88%86%E4%BA%AB-internet-gateway-%E5%92%8C-nat-gateway-%E7%9A%84%E5%8D%80%E5%88%A5%E5%9C%A8%E5%93%AA-%E5%8A%9F%E8%83%BD%E5%88%86%E5%88%A5%E6%98%AF%E4%BB%80%E9%BA%BC-b676f62b1d31
 3. AWS - NAT 閘道：https://docs.aws.amazon.com/zh_tw/vpc/latest/userguide/vpc-nat-gateway.html
 4. AWS - 安全群組：https://docs.aws.amazon.com/zh_tw/vpc/latest/userguide/vpc-security-groups.html
-5. Terraform - Element：https://developer.hashicorp.com/terraform/language/functions/element
+5. Terraform - element：https://developer.hashicorp.com/terraform/language/functions/element
+6. Terraform - length：https://developer.hashicorp.com/terraform/language/functions/length
 
 
 <a href="https://www.buymeacoffee.com/ds_cafe_and_tips"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ds_cafe_and_tips&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
