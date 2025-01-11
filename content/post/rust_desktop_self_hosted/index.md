@@ -13,7 +13,7 @@ tags:
 
 ## 簡介
 
-在遠端開發上，`Team Viewer`或是`VNC`等等軟體都是大家耳熟能詳的遠端桌面工具。現在，我想要為各位介紹一個新選擇：**RUST Desktop**。**RUST Desktop**是一個基於RUST所撰寫的遠端桌面程式，且支援地端自行架設服務。在這篇文章中，我會介紹如何透過地端自架的**RUST Desktop**服務，使得Macbook Pro可以連線至工作站的Ubuntu虛擬機。
+在遠端開發上，`Team Viewer`或是`VNC`等等軟體都是大家耳熟能詳的遠端桌面工具。現在，我想要為各位介紹一個新選擇：**RUST Desktop**。**RUST Desktop**是一個基於RUST所撰寫的遠端桌面程式，且支援地端自行架設服務。在這篇文章中，我會介紹如何透過地端自架的**RUST Desktop**伺服器服務，使得Macbook Pro可以連線至工作站的Ubuntu虛擬機。
 
 
 ## 前置準備
@@ -37,9 +37,9 @@ rustdesk-server-hbbs_1.1.12_amd64.deb
 sudo apt install <your .deb filename>
 ```
 
-### 啟動Rust Desktop Server服務
+### 啟動Rust Desktop 伺服器服務
 
-在自架Rust Desktop的Server服務時，需要啟動兩個服務，分別為`hbbs`以及`hbbr`，這兩個服務分別負責ID以及Relay的處理，這邊我們就不深入介紹。在官方的文件中有兩種啟動方式：**直接執行**以及透過**PM2**軟體啟動。
+在自架Rust Desktop的伺服器服務時，需要啟動兩個服務，分別為`hbbs`以及`hbbr`，這兩個服務分別負責ID以及Relay的處理，這邊我們就不深入介紹。在官方的文件中有兩種啟動方式：**直接執行**以及透過**PM2**軟體啟動。
 
 * 直接啟動
 
@@ -76,7 +76,7 @@ pm2 start hbbr
 
 當要關閉時，可以使用`pm2 stop <service name>`來關閉指定的服務。
 
-Rust Dektop Server將會佔用以下幾個連接埠：
+Rust Dektop 伺服器將會佔用以下幾個連接埠：
 
 * TCP (21114, 21115, 21116, 21117, 21118, 21119)
 * UDP (21116)
@@ -89,7 +89,7 @@ Rust Dektop Server將會佔用以下幾個連接埠：
 
 ### Rust Desktop客戶端設定
 
-將下來，我們需要設定客戶端。假設我們的Rust Desktop Server所在主機的`IP`位置為`192.168.0.10`，請在Ubuntu虛擬機以及Macbook Pro的客戶端設定中輸入以下資訊：
+將下來，我們需要設定客戶端。假設我們的Rust Desktop 伺服器所在主機的`IP`位置為`192.168.0.10`，請在Ubuntu虛擬機以及Macbook Pro的客戶端設定中輸入以下資訊：
 
 ![網路設定頁面](image.png)
 
