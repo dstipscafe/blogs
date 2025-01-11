@@ -1,7 +1,7 @@
 ---
 title: "RUST Desktop——遠端桌面的新選擇"
 description: "一起在地端自架RUST Desktop服務吧？"
-slug: airflow_aws_gcp_pipeline
+slug: self_hosted_rust_desktop
 date: 2025-01-11 16:00:00+0800
 image: cover.jpg
 categories:
