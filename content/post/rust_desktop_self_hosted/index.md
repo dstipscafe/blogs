@@ -1,6 +1,6 @@
 ---
-title: "RUST Desktop——遠端桌面的新選擇"
-description: "一起在地端自架RUST Desktop服務吧？"
+title: "RustDesk——遠端桌面的新選擇"
+description: "一起在地端自架RustDesk服務吧？"
 slug: self_hosted_rust_desktop
 date: 2025-01-11 16:00:00+0800
 image: cover.jpg
@@ -13,15 +13,15 @@ tags:
 
 ## 簡介
 
-在遠端開發上，`Team Viewer`或是`VNC`等等軟體都是大家耳熟能詳的遠端桌面工具。現在，我想要為各位介紹一個新選擇：**RUST Desktop**。**RUST Desktop**是一個基於RUST所撰寫的遠端桌面程式，且支援地端自行架設服務。在這篇文章中，我會介紹如何透過地端自架的**RUST Desktop**伺服器服務，使得Macbook Pro可以連線至工作站的Ubuntu虛擬機。
+在遠端開發上，`Team Viewer`或是`VNC`等等軟體都是大家耳熟能詳的遠端桌面工具。現在，我想要為各位介紹一個新選擇：**RustDesk**。**RustDesk**是一個基於RUST所撰寫的遠端桌面程式，且支援地端自行架設服務。在這篇文章中，我會介紹如何透過地端自架的**RustDesk**伺服器服務，使得Macbook Pro可以連線至工作站的Ubuntu虛擬機。
 
 
 ## 前置準備
 
 1. 遠端的Ubuntu虛擬機需要安裝`Gnome`或其他桌面軟體
-2. 需要在Ubuntu虛擬機以及Macbook Pro安裝Rust Desktop客戶端（下載連結：https://github.com/rustdesk/rustdesk/releases/tag/1.3.6）
+2. 需要在Ubuntu虛擬機以及Macbook Pro安裝RustDesk客戶端（下載連結：https://github.com/rustdesk/rustdesk/releases/tag/1.3.6）
 
-## 安裝Rust Desktop Server
+## 安裝RustDesk Server
 
 ### 取得並安裝軟體
 
@@ -37,9 +37,9 @@ rustdesk-server-hbbs_1.1.12_amd64.deb
 sudo apt install <your .deb filename>
 ```
 
-### 啟動Rust Desktop 伺服器服務
+### 啟動RustDesk 伺服器服務
 
-在自架Rust Desktop的伺服器服務時，需要啟動兩個服務，分別為`hbbs`以及`hbbr`，這兩個服務分別負責ID以及Relay的處理，這邊我們就不深入介紹。在官方的文件中有兩種啟動方式：**直接執行**以及透過**PM2**軟體啟動。
+在自架RustDesk的伺服器服務時，需要啟動兩個服務，分別為`hbbs`以及`hbbr`，這兩個服務分別負責ID以及Relay的處理，這邊我們就不深入介紹。在官方的文件中有兩種啟動方式：**直接執行**以及透過**PM2**軟體啟動。
 
 * 直接啟動
 
@@ -87,9 +87,9 @@ Rust Dektop 伺服器將會佔用以下幾個連接埠：
 
 ## 設定客戶端
 
-### Rust Desktop客戶端設定
+### RustDesk客戶端設定
 
-將下來，我們需要設定客戶端。假設我們的Rust Desktop 伺服器所在主機的`IP`位置為`192.168.0.10`，請在Ubuntu虛擬機以及Macbook Pro的客戶端設定中輸入以下資訊：
+將下來，我們需要設定客戶端。假設我們的RustDesk 伺服器所在主機的`IP`位置為`192.168.0.10`，請在Ubuntu虛擬機以及Macbook Pro的客戶端設定中輸入以下資訊：
 
 ![網路設定頁面](image.png)
 
@@ -106,7 +106,7 @@ Rust Dektop 伺服器將會佔用以下幾個連接埠：
 
 ## 小結
 
-這篇文章算是給自己的筆記，也分享給大家如何在地端自己架設Rust Desktop的伺服器，並提供內網的遠端桌面服務。希望能幫助到有需要使用遠端桌面，又不希望使用Team Viewer或是其他工具的讀者～
+這篇文章算是給自己的筆記，也分享給大家如何在地端自己架設RustDesk的伺服器，並提供內網的遠端桌面服務。希望能幫助到有需要使用遠端桌面，又不希望使用Team Viewer或是其他工具的讀者～
 
 
 ---
