@@ -15,7 +15,6 @@ tags:
 
 在遠端開發上，`Team Viewer`或是`VNC`等等軟體都是大家耳熟能詳的遠端桌面工具。現在，我想要為各位介紹一個新選擇：**RustDesk**。**RustDesk**是一個基於RUST所撰寫的遠端桌面程式，且支援地端自行架設服務。在這篇文章中，我會介紹如何透過地端自架的**RustDesk**伺服器服務，使得Macbook Pro可以連線至工作站的Ubuntu虛擬機。
 
-
 ## 前置準備
 
 1. 遠端的Ubuntu虛擬機需要安裝`Gnome`或其他桌面軟體
@@ -27,7 +26,7 @@ tags:
 
 首先，請到官方的[GitHub](https://github.com/rustdesk/rustdesk-server/releases/tag/1.1.12)下載對應的檔案，以Ubuntu為例，應下載以下檔案：
 
-```
+```text
 rustdesk-server-hbbs_1.1.12_amd64.deb
 ```
 
@@ -99,7 +98,6 @@ Rust Dektop 伺服器將會佔用以下幾個連接埠：
 
 ![固定密碼設定](image-1.png)
 
-
 ## 建立連線
 
 恭喜，完成了先前設定之後，只要在Macbook Pro的客戶端輸入Ubuntu虛擬機客戶端所提供的`ID`即可建立連線囉！
@@ -108,10 +106,8 @@ Rust Dektop 伺服器將會佔用以下幾個連接埠：
 
 這篇文章算是給自己的筆記，也分享給大家如何在地端自己架設RustDesk的伺服器，並提供內網的遠端桌面服務。希望能幫助到有需要使用遠端桌面，又不希望使用Team Viewer或是其他工具的讀者～
 
-
 ---
 
 如果覺得我的文章對你有幫助，歡迎請我喝一杯咖啡～
-
 
 <a href="https://www.buymeacoffee.com/ds_cafe_and_tips"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ds_cafe_and_tips&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
