@@ -2,7 +2,7 @@
 title: "淺談pre-commit如何讓開發流程更加有條理"
 description: "讓pre-commit為你省下一些檢查的時間"
 slug: precommit_intro
-date: 2025-03-29 18:00:00+0800
+date: 2025-03-20 16:00:00+0800
 image: cover.jpg
 categories:
     - blogs
