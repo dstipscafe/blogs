@@ -310,7 +310,6 @@ java -jar target/telegram_bot-0.1.0.jar
         </goals>
         <configuration>
           <outputDirectory>${project.build.directory}/lib</outputDirectory>
-          <!-- 只複製 runtime 範圍的依賴（可視需求調整） -->
           <includeScope>runtime</includeScope>
         </configuration>
       </execution>
@@ -319,6 +318,14 @@ java -jar target/telegram_bot-0.1.0.jar
 </plugins>
 ```
 
+完成上述設定後，只要執行`mvn clean package`指令，Maven就會自動將對應的依賴工具，連同我們撰寫的程式碼一起打包，我們再也不需要手動使用`mvn`來複製依賴工具了。接下來，只需要使用相同的指令，就可以啟動我們的程式：
+
+```shell
+java -jar target/telegram_bot-0.1.0.jar
+```
+
+可喜可賀，我們成功地讓打包流程變得更有效率，且避免了將所有的程式和設定都塞在同一個JAR檔案中了！
+
 ## 小節
 
 這次學習Java以及Maven的過程，與過去使用其他語言的過程有許多的不同，對我來說是非常新奇的體驗。Maven提供了很多很有趣，也很強大的功能，不過在學習上所需要花費的心力也是相對更多的。希望這篇文章可以幫助到其他想接觸Java的朋友。
@@ -326,6 +333,5 @@ java -jar target/telegram_bot-0.1.0.jar
 ---
 
 如果覺得我的文章對你有幫助，歡迎請我喝一杯咖啡～
-
 
 <a href="https://www.buymeacoffee.com/ds_cafe_and_tips"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ds_cafe_and_tips&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
