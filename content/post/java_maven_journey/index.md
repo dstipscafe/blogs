@@ -2,7 +2,7 @@
 title: "與Java的邂逅，從一個機器人開始"
 description: "一個Java小白，學習如何使用Maven的心得分享"
 slug: java_maven_journey
-date: 2025-06-5 11:00:00+0800
+date: 2025-06-05 11:00:00+0800
 image: image.png
 categories:
     - blogs
