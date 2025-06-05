@@ -217,12 +217,13 @@ Bot successfully started!
 
 ### Thin JAR
 
-Thin JAR的做法與Fat JAR相比，產生的檔案大小相對較小，但必須要自己處理依賴工具的導入。這邊提供我學到的兩種方法，也歡迎有經驗的讀者提供更多種做法。
+Thin JAR的做法與Fat JAR相比，產生的檔案大小相對較小，但必須要自己處理依賴工具的導入。這邊提供我學到的三個步驟，也歡迎有經驗的讀者提供更多種做法。
 
 1. 使用`mvn`指令手動將依賴工具複製到`target/`資料夾，並在啟動時宣告依賴工具的位置
-2. 使用`AppAssembler`將所有的程式碼以及依賴工具進行搜集，並自動在`target/`資料夾中產生一份依賴工具的目錄
+2. 使用`AppAssembler`將所有的程式碼以及依賴工具進行搜集，並自動在產生的`Manifest`資料夾產生一份依賴工具的目錄
+3. 使用`mvn-dependency-plugin`來自動將依賴工具打包到指定的位置
 
-## 方法一
+## 步驟一：建構基本專案
 
 第一種方法在設定上比較簡單，只要在`pom.xml`中設定好相關的依賴工具後，先使用`mvn clean package`將自訂的程式碼打包，再使用以下指令來將依賴工具的程式碼複製到`target/`資料夾中：
 
@@ -244,7 +245,7 @@ Bot successfully started!
 
 這種處理方式可以不需要在設定中有太多的著墨，但是後續需要手動將依賴工具複製到對應的位置，且還要在啟動時手動宣告依賴工具的位置，個人是不太喜歡的。所以就繼續研究，並了解到可以使用方法二來讓整個Thin JAR的產生及維護更加的順暢且容易管理。
 
-### 方法二
+### 步驟二：設定依賴工具位置，簡化啟動指令
 
 在Thin JAR的打包上，我們可以透過`pom.xml`中的`maven-jar-plugin`所提供的功能，設定依賴工具將被放置的位置，同時設定主要入口的Class名稱。這樣一來，我們也可以直接以近乎Fat JAR的方式來運作程式，但在依賴工具管理和儲存上有更大的優勢。
 
@@ -282,7 +283,41 @@ mvn dependency:copy-dependencies -DoutputDirectory=target/lib
 java -jar target/telegram_bot-0.1.0.jar
 ```
 
-這樣一來，我們就不需要為了Fat JAR以及Thin JAR分別使用不同的指令，在管理上有了一定程度的改善，但可惜的是仍沒辦法讓依賴工具的處理方面能夠被自動的處理。
+這樣一來，我們就不需要為了Fat JAR以及Thin JAR分別使用不同的指令，在管理上有了一定程度的改善，但可惜的是仍沒辦法讓依賴工具的處理方面能夠被自動的處理。那麼，該怎麼做才能讓依賴工具能被自動的打包到`target/`呢？
+
+### 步驟三：設定依賴工具自動打包，進一步簡化流程
+
+想要讓依賴工具的打包也被納入`mvn package`的流程中，我們需要借助`maven-dependency-plugin`的幫助。我們需要提供以下幾個資訊來讓`maven-dependency-plugin`幫我們打這些依賴工具打包到我們希望的位置：
+
+1. `outputDirectory`：依賴工具的輸出資料夾
+2. `includeScope`：要複製的依賴工具範圍
+
+在這裡，我們會如同上一步驟，將依賴工具打包到`target/lib/`資料夾，並限制只打包在有運作時所需要的依賴工具。以下是我們的設定：
+
+```xml
+<plugins>
+  # .... other plugins
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>3.3.0</version>
+    <executions>
+      <execution>
+        <id>copy-dependencies</id>
+        <phase>package</phase>
+        <goals>
+          <goal>copy-dependencies</goal>
+        </goals>
+        <configuration>
+          <outputDirectory>${project.build.directory}/lib</outputDirectory>
+          <!-- 只複製 runtime 範圍的依賴（可視需求調整） -->
+          <includeScope>runtime</includeScope>
+        </configuration>
+      </execution>
+    </executions>
+  </plugin>
+</plugins>
+```
 
 ## 小節
 
