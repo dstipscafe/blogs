@@ -3,7 +3,7 @@ title: "一步一步教你如何安裝NemoClaw並設定好遠端連線"
 description: "那些官方文件中沒有提到的事"
 slug: nemoclaw_install_guide
 date: 2026-03-22 15:00:00+0800
-image: cover.jpg
+image: cover.png
 categories:
     - blogs
 tags:
