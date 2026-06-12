@@ -5,9 +5,9 @@
     radial-gradient(900px 600px at 95% 12%, rgba(255, 170, 200, 0.3), transparent 60%),
     radial-gradient(1000px 800px at 50% 110%, rgba(140, 230, 210, 0.3), transparent 60%),
     linear-gradient(180deg, #f3f4fb, #eef0f8);
-  --card-bg: rgba(255, 255, 255, 0.55);
-  --card-border: rgba(255, 255, 255, 0.65);
-  --glass-blur: blur(18px) saturate(170%);
+  --card-bg: rgba(255, 255, 255, 0.18);
+  --card-border: rgba(255, 255, 255, 0.8);
+  --glass-blur: blur(14px) saturate(185%);
   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.75),
     inset 0 -1px 0 rgba(255, 255, 255, 0.2);
   --text-color: #16181d;
@@ -29,9 +29,9 @@
     radial-gradient(900px 600px at 95% 12%, rgba(190, 90, 150, 0.2), transparent 60%),
     radial-gradient(1000px 800px at 50% 110%, rgba(60, 170, 150, 0.18), transparent 60%),
     linear-gradient(180deg, #1b1c22, #17181d);
-  --card-bg: rgba(46, 47, 56, 0.55);
-  --card-border: rgba(255, 255, 255, 0.14);
-  --glass-blur: blur(18px) saturate(160%);
+  --card-bg: rgba(46, 47, 56, 0.18);
+  --card-border: rgba(255, 255, 255, 0.24);
+  --glass-blur: blur(14px) saturate(175%);
   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.16),
     inset 0 -1px 0 rgba(255, 255, 255, 0.04);
   --text-color: #ececf1;
