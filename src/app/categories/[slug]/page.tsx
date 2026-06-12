@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllCategories } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
+import CategoryBar from '@/components/CategoryBar';
 
 export function generateStaticParams() {
   return getAllCategories().map((c) => ({ slug: c.slug }));
@@ -24,9 +25,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div>
-      <h1 className="page-title">
-        Category: {entry.name} <small style={{ color: 'var(--text-secondary)' }}>({entry.posts.length})</small>
-      </h1>
+      <h1 className="page-title">Categories</h1>
+      <CategoryBar activeSlug={entry.slug} />
       {entry.posts.map((post) => (
         <PostCard key={post.slug} post={post} />
       ))}

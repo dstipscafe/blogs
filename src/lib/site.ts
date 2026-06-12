@@ -23,6 +23,7 @@ export const socialLinks = [
 export const mainMenu = [
   { name: '首頁', url: '/', icon: 'home' },
   { name: 'About me', url: '/about-me/', icon: 'user' },
+  { name: 'Categories', url: '/categories/', icon: 'folder' },
   { name: 'Archives', url: '/archives/', icon: 'archive' },
   { name: 'Search', url: '/search/', icon: 'search' },
   { name: 'Links', url: '/links/', icon: 'link' },
