@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import Sidebar from '@/components/Sidebar';
+import RainBackground from '@/components/RainBackground';
 import { site } from '@/lib/site';
 import 'highlight.js/styles/atom-one-dark.css';
 import './globals.css';
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-TW" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+          <RainBackground />
           <div className="site-container">
             <Sidebar />
             <main className="main-content">{children}</main>
