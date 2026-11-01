@@ -1,11 +1,11 @@
-import { getAllPosts } from '@/lib/posts';
+import { getListedPosts } from '@/lib/posts';
 import { site } from '@/lib/site';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
 import HomeWidgets from '@/components/HomeWidgets';
 
 export default function HomePage() {
-  const posts = getAllPosts();
+  const posts = getListedPosts();
   const pagePosts = posts.slice(0, site.postsPerPage);
   const totalPages = Math.ceil(posts.length / site.postsPerPage);
 

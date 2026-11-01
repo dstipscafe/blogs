@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getAllPosts, getPostBySlug, taxonomySlug } from '@/lib/posts';
+import { getAllPosts, getChildPosts, getPostBySlug, taxonomySlug } from '@/lib/posts';
 import { site } from '@/lib/site';
 import { formatDate } from '@/lib/format';
 import MarkdownContent from '@/components/MarkdownContent';
@@ -37,12 +37,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const pageUrl = `${site.url}/p/${post.slug}/`;
+  const parentPost = post.parent ? getPostBySlug(post.parent) : undefined;
+  const childPosts = getChildPosts(post.slug);
 
   return (
     <div className="with-widgets">
       <article className="article-page">
         {post.image && <img className="cover" src={post.image} alt={post.title} />}
         <div className="article-inner">
+          {parentPost && (
+            <div className="post-meta" style={{ marginBottom: 8 }}>
+              <Link href={`/p/${parentPost.slug}/`}>← {parentPost.title}</Link>
+            </div>
+          )}
           <div className="post-meta" style={{ marginBottom: 8 }}>
             {post.categories.map((c) => (
               <Link key={c} className="category" href={`/categories/${taxonomySlug(c)}/`}>
@@ -56,6 +63,18 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <span>{post.readingTime} 分鐘閱讀</span>
           </div>
           <MarkdownContent source={post.content} />
+          {childPosts.length > 0 && (
+            <div className="widget" style={{ marginTop: 32 }}>
+              <h3>系列文章</h3>
+              <ul>
+                {childPosts.map((c) => (
+                  <li key={c.slug}>
+                    <Link href={`/p/${c.slug}/`}>{c.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {post.tags.length > 0 && (
             <div className="tag-cloud" style={{ marginTop: 32 }}>
               {post.tags.map((t) => (

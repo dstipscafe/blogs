@@ -21,6 +21,7 @@ export interface PostMeta {
   categories: string[];
   tags: string[];
   readingTime: number;
+  parent: string | null;
 }
 
 export interface Post extends PostMeta {
@@ -121,6 +122,7 @@ function loadPost(filePath: string): Post {
     categories: (data.categories ?? []).map(String),
     tags: (data.tags ?? []).map(String),
     readingTime: computeReadingTime(content),
+    parent: data.parent ? String(data.parent) : null,
     content: processed,
     toc: extractToc(content),
   };
@@ -139,6 +141,17 @@ export function getAllPosts(): Post[] {
 
 export function getPostBySlug(slug: string): Post | undefined {
   return getAllPosts().find((p) => p.slug === slug);
+}
+
+// 首頁文章流只列出非子頁面的文章；子頁面仍會出現在 archives、分類、標籤、搜尋與 RSS
+export function getListedPosts(): Post[] {
+  return getAllPosts().filter((p) => !p.parent);
+}
+
+export function getChildPosts(parentSlug: string): Post[] {
+  return getAllPosts()
+    .filter((p) => p.parent === parentSlug)
+    .sort((a, b) => (a.date > b.date ? 1 : -1));
 }
 
 export function taxonomySlug(name: string): string {

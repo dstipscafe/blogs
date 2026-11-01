@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation';
-import { getAllPosts } from '@/lib/posts';
+import { getListedPosts } from '@/lib/posts';
 import { site } from '@/lib/site';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
 import HomeWidgets from '@/components/HomeWidgets';
 
 export function generateStaticParams() {
-  const totalPages = Math.ceil(getAllPosts().length / site.postsPerPage);
+  const totalPages = Math.ceil(getListedPosts().length / site.postsPerPage);
   return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, i) => ({
     num: String(i + 2),
   }));
@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export default async function PostListPage({ params }: { params: Promise<{ num: string }> }) {
   const { num } = await params;
   const current = Number(num);
-  const posts = getAllPosts();
+  const posts = getListedPosts();
   const totalPages = Math.ceil(posts.length / site.postsPerPage);
   if (!Number.isInteger(current) || current < 2 || current > totalPages) notFound();
 
